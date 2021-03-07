@@ -143,9 +143,12 @@ class LinkedList {
     let current = this.head;
 
     while (current !== null) {
-      const temp = current.next;
-      current.next = current.prev;
-      current.prev = temp;
+      let temp = null;
+      if (current.next !== current.prev) {
+        temp = current.next;
+        current.next = current.prev;
+        current.prev = temp;
+      }
 
       current = temp;
     }
