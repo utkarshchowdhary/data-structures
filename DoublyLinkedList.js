@@ -143,21 +143,16 @@ class LinkedList {
     let current = this.head;
 
     while (current !== null) {
-      let temp = null;
-      if (current.next !== current.prev) {
-        temp = current.next;
-        current.next = current.prev;
-        current.prev = temp;
-      }
+      const temp = current.next;
+      current.next = current.prev;
+      current.prev = temp;
 
       current = temp;
     }
 
-    if (this.head !== this.tail) {
-      const temp = this.head;
-      this.head = this.tail;
-      this.tail = temp;
-    }
+    const temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
   }
 }
 
