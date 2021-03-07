@@ -147,6 +147,22 @@ class LinkedList {
 
     this.size--;
   }
+
+  reverse() {
+    let current = this.head;
+    let prev = null;
+
+    while (current !== null) {
+      let next = current.next;
+      current.next = prev;
+      prev = current;
+
+      current = next;
+    }
+
+    this.tail = this.head;
+    this.head = prev;
+  }
 }
 
 const linkedList = new LinkedList();
@@ -160,6 +176,8 @@ linkedList.insert(1, "2");
 linkedList.insert(3, "4");
 
 linkedList.insert(0, "0");
+
+linkedList.reverse();
 
 linkedList.print();
 
