@@ -56,7 +56,7 @@ class LinkedList {
       process.stdout.write(`${current.value}->`);
       current = current.next;
     }
-    process.stdout.write("null");
+    process.stdout.write(`null\n`);
   }
 
   insert(index, value) {
