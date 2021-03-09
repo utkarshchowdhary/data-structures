@@ -31,14 +31,17 @@ class Stack {
     } else {
       this.top = node;
     }
-    this.size++;
+    return ++this.size;
   }
 
   pop() {
     if (this.top) {
+      const current = this.top;
       this.top = this.top.next;
       this.size--;
+      return current.value;
     }
+    return null;
   }
 }
 
