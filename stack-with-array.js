@@ -20,12 +20,14 @@ class Stack {
   }
 }
 
-const stack = new Stack();
+// const stack = new Stack();
 
-stack.push("google");
-stack.push("yahoo");
-stack.push("bing");
+// stack.push("google");
+// stack.push("yahoo");
+// stack.push("bing");
 
-stack.pop();
+// stack.pop();
 
-console.log(stack);
+// console.log(stack);
+
+exports.Stack = Stack;
