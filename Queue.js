@@ -24,7 +24,7 @@ class Queue {
   }
 
   peek() {
-    return this.first.value;
+    return this.first && this.first.value;
   }
 
   enqueue(value) {
