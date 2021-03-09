@@ -3,6 +3,10 @@ class Stack {
     this.array = [];
   }
 
+  isEmpty() {
+    return this.array.length === 0;
+  }
+
   peek() {
     return this.array[this.array.length - 1];
   }

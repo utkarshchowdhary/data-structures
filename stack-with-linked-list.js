@@ -18,6 +18,10 @@ class Stack {
     this.size = 0;
   }
 
+  isEmpty() {
+    return this.top === null;
+  }
+
   peek() {
     return this.top;
   }
