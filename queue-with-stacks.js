@@ -5,6 +5,10 @@ class Queue {
     this.one = new Stack();
   }
 
+  isEmpty() {
+    return this.one.isEmpty();
+  }
+
   peek() {
     return this.one[this.one.length - 1];
   }
