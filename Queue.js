@@ -54,12 +54,14 @@ class Queue {
   }
 }
 
-const queue = new Queue();
+// const queue = new Queue();
 
-queue.enqueue("QuickSilver");
-queue.enqueue("Wanda");
-queue.enqueue("Vision");
+// queue.enqueue("QuickSilver");
+// queue.enqueue("Wanda");
+// queue.enqueue("Vision");
 
-queue.dequeue();
+// queue.dequeue();
 
-console.dir(queue, { depth: null });
+// console.dir(queue, { depth: null });
+
+exports.Queue = Queue;
