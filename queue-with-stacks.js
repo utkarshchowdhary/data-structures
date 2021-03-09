@@ -10,7 +10,7 @@ class Queue {
   }
 
   peek() {
-    return this.one[this.one.length - 1];
+    return this.one.peek();
   }
 
   enqueue(value) {
