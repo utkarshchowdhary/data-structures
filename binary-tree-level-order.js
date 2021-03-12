@@ -39,13 +39,37 @@ class BinaryTree {
       }
     }
   }
+
+  levelOrderTraversal() {
+    if (this.root) {
+      const queue = new Queue();
+      queue.enqueue(this.root);
+
+      while (!queue.isEmpty()) {
+        const current = queue.dequeue();
+
+        process.stdout.write(`${current.value} `);
+
+        if (current.left) {
+          queue.enqueue(current.left);
+        }
+
+        if (current.right) {
+          queue.enqueue(current.right);
+        }
+      }
+    }
+  }
 }
 
 const tree = new BinaryTree();
 tree.insert("1");
+tree.insert("13");
+tree.insert("7");
 tree.insert("2");
 tree.insert("3");
-tree.insert("4");
-tree.insert("5");
 
 console.dir(tree, { depth: null });
+
+console.log("LevelOrderTraversal");
+tree.levelOrderTraversal();
