@@ -2,6 +2,16 @@
   -Trees are hierarchical data structures. 
   -A tree whose nodes have at most 2 children is called a binary tree.
 
+  Properties:
+  -Edge – connection between one node to another.
+  -Path – a sequence of nodes and edges connecting a node with a descendant.
+  -Height – The height of a node is the number of edges towards the longest downward path from
+   that node to a leaf node.
+  -Depth – The depth of a node is the number of edges from that node to the tree's root node.
+  -Level – The level of a node is the number of parent nodes from that node until the root node.
+  -The maximum number of nodes at level ‘l’ of a binary tree is 2^l.
+  -The maximum number of nodes in a binary tree of height ‘h’ is 2^(h+1)–1.
+
   Types:
   -In full binary tree every node has either 0 or 2 children.
   -In Complete Binary Tree all levels are completely filled 
