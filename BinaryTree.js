@@ -11,8 +11,8 @@
   -Level – The level of a node is the number of parent nodes from that node until the root node.
   -The maximum number of nodes at level ‘l’ of a binary tree is 2^l.
   -The maximum number of nodes in a binary tree of height ‘h’ is 2^(h+1)–1.
-  -The minimum number of nodes in binary tree of height ‘h’ is h+1.
-  -The maximum height of binary tree with ‘n’ nodes is n-1.
+  -The minimum number of nodes in binary tree of height ‘h’ is h+1 i.e., in case of skewed binary tree.
+  -The maximum height of binary tree with ‘n’ nodes is n-1 i.e., in case of skewed binary tree..
   -The minimum height of binary tree with ‘n’ nodes is floor(log2n) or ceil(log2(n+1)-1).
 
   Types:
