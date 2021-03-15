@@ -97,11 +97,11 @@ class BinarySearchTree {
   }
 
   find_min(node) {
-    let current = node;
-    while (current.left) {
-      current = current.left;
+    let current_node = node;
+    while (current_node.left) {
+      current_node = current_node.left;
     }
-    return current;
+    return current_node;
   }
 
   delete(value) {
@@ -148,7 +148,5 @@ tree.insert(20);
 tree.insert(170);
 tree.insert(15);
 tree.insert(1);
-
-tree.delete(9);
 
 console.dir(tree, { depth: null });
