@@ -1,0 +1,61 @@
+/*
+  -In Binary Search Tree all internal nodes have value greater than values in it's left subtree and 
+   less than those in it's right subtree.
+  -In a balanced binary search tree each comparison skips about half of the remaining tree, 
+   so the whole lookup takes time proportional to the binary logarithm of the number of items 
+   stored in the tree.
+*/
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(value) {
+    if (this.root) {
+      this._insert(this.root, value);
+    } else {
+      this.root = new Node(value);
+    }
+  }
+
+  _insert(node, value) {
+    if (value < node.value) {
+      if (node.left) {
+        this._insert(node.left, value);
+      } else {
+        node.left = new Node(value);
+      }
+    } else if (value > node.value) {
+      if (node.right) {
+        this._insert(node.right, value);
+      } else {
+        node.right = new Node(value);
+      }
+    }
+  }
+}
+
+const tree = new BinarySearchTree();
+/*
+      9
+    4  20
+  1 6 15 170
+*/
+tree.insert(9);
+tree.insert(4);
+tree.insert(6);
+tree.insert(20);
+tree.insert(170);
+tree.insert(15);
+tree.insert(1);
+
+console.dir(tree, { depth: null });
