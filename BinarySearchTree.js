@@ -109,21 +109,25 @@ class BinarySearchTree {
   }
 
   _delete(node, value) {
-    if (!node) return null;
-
     if (value < node.value) {
-      node.left = this._delete(node.left, value);
+      if (node.left) node.left = this._delete(node.left, value);
     } else if (value > node.value) {
-      node.right = this._delete(node.right, value);
+      if (node.right) node.right = this._delete(node.right, value);
     } else {
       if (node.left && node.right) {
+        // If the node has two children.
+        // Place the inorder successor in position of the node to be deleted.
         node.value = this.find_min(node.right).value;
+        // Delete the inorder successor.
         node.right = this._delete(node.right, node.value);
       } else if (node.left) {
+        // If the node has only left child.
         return node.left;
       } else if (node.right) {
+        // If the node has only right child.
         return node.right;
       } else {
+        // If the node has no child.
         return null;
       }
     }
@@ -144,5 +148,7 @@ tree.insert(20);
 tree.insert(170);
 tree.insert(15);
 tree.insert(1);
+
+tree.delete(9);
 
 console.dir(tree, { depth: null });
