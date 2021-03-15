@@ -19,6 +19,33 @@ class BinarySearchTree {
     this.root = null;
   }
 
+  insert_iteratively(value) {
+    if (!this.root) {
+      this.root = new Node(value);
+      return;
+    }
+
+    let current = this.root;
+
+    while (current) {
+      if (value < current.value) {
+        if (current.left) {
+          current = current.left;
+        } else {
+          current.left = new Node(value);
+          break;
+        }
+      } else if (value > current.value) {
+        if (current.right) {
+          current = current.right;
+        } else {
+          current.right = new Node(value);
+          break;
+        }
+      }
+    }
+  }
+
   insert(value) {
     if (this.root) {
       this._insert(this.root, value);
