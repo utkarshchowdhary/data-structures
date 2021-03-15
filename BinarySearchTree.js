@@ -25,6 +25,7 @@ class BinarySearchTree {
       return;
     }
     let current = this.root;
+
     while (current) {
       if (value < current.value) {
         if (current.left) {
