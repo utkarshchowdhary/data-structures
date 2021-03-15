@@ -95,6 +95,40 @@ class BinarySearchTree {
       return this._search(node.right, value);
     }
   }
+
+  find_min(node) {
+    let current = node;
+    while (current.left) {
+      current = current.left;
+    }
+    return current;
+  }
+
+  delete(value) {
+    this.root = this._delete(this.root, value);
+  }
+
+  _delete(node, value) {
+    if (!node) return null;
+
+    if (value < node.value) {
+      node.left = this._delete(node.left, value);
+    } else if (value > node.value) {
+      node.right = this._delete(node.right, value);
+    } else {
+      if (node.left && node.right) {
+        node.value = this.find_min(node.right).value;
+        node.right = this._delete(node.right, node.value);
+      } else if (node.left) {
+        return node.left;
+      } else if (node.right) {
+        return node.right;
+      } else {
+        return null;
+      }
+    }
+    return node;
+  }
 }
 
 const tree = new BinarySearchTree();
