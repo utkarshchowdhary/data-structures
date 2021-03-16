@@ -70,10 +70,8 @@ class BinarySearchTree {
 
   search_iteratively(value) {
     let current = this.root;
-    while (current) {
-      if (current.value === value) {
-        break;
-      } else if (value < current.value) {
+    while (current && current.value !== value) {
+      if (value < current.value) {
         current = current.left;
       } else if (value > current.value) {
         current = current.right;
