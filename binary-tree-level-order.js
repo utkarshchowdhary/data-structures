@@ -41,22 +41,23 @@ class BinaryTree {
   }
 
   levelOrderTraversal() {
-    if (this.root) {
-      const queue = new Queue();
-      queue.enqueue(this.root);
+    if (!this.root) {
+      return;
+    }
+    const queue = new Queue();
+    queue.enqueue(this.root);
 
-      while (!queue.isEmpty()) {
-        const current = queue.dequeue();
+    while (!queue.isEmpty()) {
+      const current = queue.dequeue();
 
-        process.stdout.write(`${current.value} `);
+      process.stdout.write(`${current.value} `);
 
-        if (current.left) {
-          queue.enqueue(current.left);
-        }
+      if (current.left) {
+        queue.enqueue(current.left);
+      }
 
-        if (current.right) {
-          queue.enqueue(current.right);
-        }
+      if (current.right) {
+        queue.enqueue(current.right);
       }
     }
   }
