@@ -41,9 +41,8 @@ class BinaryTree {
   }
 
   levelOrderTraversal() {
-    if (!this.root) {
-      return;
-    }
+    if (!this.root) return;
+
     const queue = new Queue();
     queue.enqueue(this.root);
 
