@@ -105,7 +105,7 @@ class BinarySearchTree {
   }
 
   delete(value) {
-    this.root = this._delete(this.root, value);
+    if (this.root) this.root = this._delete(this.root, value);
   }
 
   _delete(node, value) {
