@@ -131,7 +131,7 @@ class BinarySearchTree {
 
     if (current.left && current.right) {
       // current node has both children.
-      // delete the node with the minimum value in right subtree and place it's value to the current node.
+      // delete the node with the minimum value in right subtree and place it's value in the current node.
       current.value = this.delete_inorder_successor(current).value;
     } else if (current.left) {
       // current node has only left child.
