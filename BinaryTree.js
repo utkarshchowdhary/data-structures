@@ -26,6 +26,8 @@
    the left nodes or the right nodes.
 */
 
+const { Stack } = require("./stack-with-array");
+
 class Node {
   constructor(value) {
     this.value = value;
@@ -47,6 +49,26 @@ class BinaryTree {
     this.preOrderTraversal(node.right);
   }
 
+  inOrderTraversalIterative() {
+    const stack = new Stack();
+    let current = this.root;
+
+    while (!stack.isEmpty() || current) {
+      if (current) {
+        // if current node exists push it's reference onto the stack and traverse to it's left.
+        // this continues until the extreme left node is reached.
+        stack.push(current);
+        current = current.left;
+      } else {
+        // if current node is null take out the most recent node's reference from the stack,
+        // print it's value and move to the right of it.
+        current = stack.pop();
+        process.stdout.write(`${current.value} `);
+        current = current.right;
+      }
+    }
+  }
+
   inOrderTraversal(node) {
     if (!node) return;
 
@@ -65,7 +87,11 @@ class BinaryTree {
 }
 
 const tree = new BinaryTree();
-
+/*
+      1
+    2  3
+  4 5
+*/
 tree.root = new Node("1");
 tree.root.left = new Node("2");
 tree.root.right = new Node("3");
