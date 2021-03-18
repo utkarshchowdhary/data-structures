@@ -78,7 +78,6 @@ class BinaryTree {
     while (!stack.isEmpty() || current) {
       if (current) {
         // if current node exists push it's reference onto the stack and traverse to it's left.
-        // this continues until the extreme left node is reached.
         stack.push(current);
         current = current.left;
       } else {
@@ -97,6 +96,36 @@ class BinaryTree {
     this.inOrderTraversal(node.left);
     process.stdout.write(`${node.value} `);
     this.inOrderTraversal(node.right);
+  }
+
+  postOrderTraversalIterative() {
+    if (!this.root) return;
+
+    const stack = new Stack();
+    let current = this.root;
+    let previous = null;
+
+    while (!stack.isEmpty() || current) {
+      if (current) {
+        // if current node exists push it's reference onto the stack and traverse to it's left.
+        stack.push(current);
+        current = current.left;
+      } else {
+        // if the current node is null look at the most recent node's reference from the stack.
+        let peekNode = stack.peek();
+        // if the peeked node has a right child and it is unvisited
+        // i.e., it is not equal to the last visited node move to it.
+        if (peekNode.right && peekNode.right !== previous) {
+          current = peekNode.right;
+        } else {
+          // if the peeked node dosn't have a right child
+          // or it's right child is equal to last visited node i.e., it is already traversed,
+          // print it's value and keep track of last visited node.
+          process.stdout.write(`${current.value} `);
+          previous = stack.pop();
+        }
+      }
+    }
   }
 
   postOrderTraversal(node) {
