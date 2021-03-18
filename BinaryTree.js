@@ -41,6 +41,28 @@ class BinaryTree {
     this.root = null;
   }
 
+  preOrderTraversalIterative() {
+    if (!this.root) return;
+
+    const stack = new Stack();
+    stack.push(this.root);
+
+    while (!stack.isEmpty()) {
+      const current = stack.pop();
+
+      process.stdout.write(`${current.value} `);
+
+      if (current.right) {
+        // right child is pushed first so that left is processed first
+        stack.push(current.right);
+      }
+
+      if (current.left) {
+        stack.push(current.left);
+      }
+    }
+  }
+
   preOrderTraversal(node) {
     if (!node) return;
 
