@@ -99,8 +99,6 @@ class BinaryTree {
   }
 
   postOrderTraversalIterative() {
-    if (!this.root) return;
-
     const stack = new Stack();
     let current = this.root;
     let previous = null;
