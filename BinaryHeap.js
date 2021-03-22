@@ -48,7 +48,7 @@ class BinaryHeap {
     const end = this.values.pop();
     // if there are no nodes left in the heap after removing the last node,
     // i.e., initially it was empty or only had one node, end here.
-    if (this.values.length <= 0) {
+    if (this.values.length === 0) {
       return max;
     }
     this.values[0] = end;
