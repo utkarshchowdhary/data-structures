@@ -82,7 +82,7 @@ class BinaryHeap {
         }
       }
 
-      // if the current node is greater than its left or right, end here.
+      // if the current node is greater than its left and right child, end here.
       if (largest === index) break;
 
       // Otherwise, swap current node with the largest node and
