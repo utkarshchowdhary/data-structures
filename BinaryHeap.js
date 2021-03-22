@@ -81,11 +81,11 @@ class BinaryHeap {
         }
       }
 
-      // if the current position is the greater than its left or right end here.
+      // if the current node is the greater than its left or right end here.
       if (largest === index) break;
 
-      // Otherwise, swap current with the largest position and
-      // save largest position which will be the next current.
+      // Otherwise, swap current node with the largest node and
+      // save its position which will be the next current.
       this.values[index] = this.values[largest];
       this.values[largest] = current;
       index = largest;
