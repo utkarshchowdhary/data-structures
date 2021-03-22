@@ -34,7 +34,7 @@ class BinaryHeap {
 
       // if the current node is greater than its parent,
       // swap them and save its parent's index which will be the next current.
-      if (current >= parent) {
+      if (current > parent) {
         this.values[parentIndex] = current;
         this.values[index] = parent;
         index = parentIndex;
