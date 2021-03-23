@@ -82,8 +82,8 @@ class PriorityQueue {
       // if the right child exists.
       if (rightChildIndex < length) {
         rightChild = this.values[rightChildIndex];
-        // if current node's priority is greater than left child or
-        // if priorities are same its order is smaller than left child.
+        // if current node's priority was greater than left child or
+        // if priorities were same its order is smaller than left child.
         if (largest === index) {
           // if right child's priority is greater than current node's priority set its index to largest.
           if (rightChild.priority > current.priority) {
@@ -98,8 +98,8 @@ class PriorityQueue {
             largest = rightChildIndex;
           }
         }
-        // if left child's priority is greater than current node or
-        // if priorities are same its order is smaller than current node.
+        // if left child's priority was greater than current node or
+        // if priorities were same its order is smaller than current node.
         else if (largest === leftChildIndex) {
           // if right child's priority is greater than left child's priority set its index to largest.
           if (rightChild.priority > leftChild.priority) {
@@ -116,8 +116,8 @@ class PriorityQueue {
         }
       }
 
-      // if the current node's priority is greater than priority of its left and right child or
-      // if priorities are same its order is smaller than its left and right child, end here.
+      // if the current node's priority was greater than priority of its left and right child or
+      // if priorities were same its order is smaller than its left and right child, end here.
       if (largest === index) break;
 
       // Otherwise, swap current node with the largest node and
