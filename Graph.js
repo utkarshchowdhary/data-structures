@@ -35,6 +35,13 @@ class Graph {
 }
 
 const graph = new Graph();
+/*
+    3 - 4 - 5
+   |   |   |
+   1 - 2   6
+   \  /
+    0
+*/
 graph.addVertex("0");
 graph.addVertex("1");
 graph.addVertex("2");
