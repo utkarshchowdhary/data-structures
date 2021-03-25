@@ -40,7 +40,6 @@ function mergeSort(array) {
       right[i - middle] = array[i];
     }
   }
-
   return merge(mergeSort(left), mergeSort(right));
 }
 
