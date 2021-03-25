@@ -26,7 +26,7 @@ function merge(left, right) {
 
 function mergeSort(array) {
   const length = array.length;
-  if (length <= 1) {
+  if (length < 2) {
     return array;
   }
   const middle = Math.floor(length / 2);
