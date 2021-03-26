@@ -1,9 +1,8 @@
 function quickSort(a, low, high) {
   if (low < high) {
-    let pivot = a[high];
     let partitionIndex = low;
     for (let i = low; i < high; i++) {
-      if (a[i] <= pivot) {
+      if (a[i] <= a[high]) {
         [a[partitionIndex], a[i]] = [a[i], a[partitionIndex]];
         partitionIndex++;
       }
