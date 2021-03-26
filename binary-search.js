@@ -15,4 +15,5 @@ function binarySearch(a, t) {
 }
 
 const a = [3, 4, 7, 9];
-console.log(binarySearch(a, 7));
+const target = 7;
+console.log(binarySearch(a, target));
