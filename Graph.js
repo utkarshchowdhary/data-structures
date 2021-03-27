@@ -39,12 +39,12 @@ class Graph {
   BFS(u) {
     // In BFS all of the neighbouring nodes at the present depth are explored prior to
     // moving on to the nodes at the next depth level.
-    const visited = {};
+    const visited = new Set();
     const queue = new Queue();
 
     // set the source node as visited so that it won't be added to the queue again
     // when encountered by its neighbouring nodes.
-    visited[u] = true;
+    visited.add(u);
     queue.enqueue(u);
 
     while (!queue.isEmpty()) {
@@ -55,8 +55,8 @@ class Graph {
       // add all non-visited neighbouring nodes of the current node to the queue
       // and set them as visited so that they won't be added again.
       for (let v of this.adjacencyList[current]) {
-        if (!visited[v]) {
-          visited[v] = true;
+        if (!visited.has(v)) {
+          visited.add(v);
           queue.enqueue(v);
         }
       }
@@ -66,12 +66,12 @@ class Graph {
   DFS(u) {
     // DFS involves exhaustive searches of all the nodes along each branch starting at the source node
     // before backtracking.
-    const visited = {};
+    const visited = new Set();
     const stack = new Stack();
 
     // set the source node as visited so that it won't be added to the stack again
     // when encountered by its neighbouring nodes.
-    visited[u] = true;
+    visited.add(u);
     stack.push(u);
 
     while (!stack.isEmpty()) {
@@ -82,8 +82,8 @@ class Graph {
       // add all non-visited neighbouring nodes of the current node to the stack
       // and set them as visited so that they won't be added again.
       for (let v of this.adjacencyList[current]) {
-        if (!visited[v]) {
-          visited[v] = true;
+        if (!visited.has(v)) {
+          visited.add(v);
           stack.push(v);
         }
       }
@@ -92,13 +92,13 @@ class Graph {
 
   DFSRecursive(u, visited) {
     if (!visited) {
-      visited = {};
+      visited = new Set();
     }
-    visited[u] = true;
+    visited.add(u);
     process.stdout.write(`${u} `);
 
     for (let v of this.adjacencyList[u]) {
-      if (!visited[v]) {
+      if (!visited.has(v)) {
         this.DFSRecursive(v, visited);
       }
     }
