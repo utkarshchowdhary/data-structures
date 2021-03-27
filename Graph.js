@@ -89,6 +89,20 @@ class Graph {
       }
     }
   }
+
+  DFSRecursive(u, visited) {
+    if (!visited) {
+      visited = {};
+    }
+    visited[u] = true;
+    process.stdout.write(`${u} `);
+
+    for (let v of this.adjacencyList[u]) {
+      if (!visited[v]) {
+        this.DFSRecursive(v, visited);
+      }
+    }
+  }
 }
 
 const graph = new Graph();
@@ -121,3 +135,5 @@ console.log("BFS");
 graph.BFS("2");
 console.log("\nDFS");
 graph.DFS("2");
+console.log("\nDFS RECURSIVE");
+graph.DFSRecursive("2");
