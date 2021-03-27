@@ -17,6 +17,7 @@
 */
 
 const { Queue } = require("./Queue");
+const { Stack } = require("./stack-with-array");
 
 class Graph {
   constructor() {
@@ -54,6 +55,26 @@ class Graph {
       }
     }
   }
+
+  DFS(u) {
+    const visited = {};
+    const stack = new Stack();
+    visited[u] = true;
+    stack.push(u);
+
+    while (!stack.isEmpty()) {
+      const current = stack.pop();
+
+      process.stdout.write(`${current} `);
+
+      for (let v of this.adjacencyList[current]) {
+        if (!visited[v]) {
+          visited[v] = true;
+          stack.push(v);
+        }
+      }
+    }
+  }
 }
 
 const graph = new Graph();
@@ -84,3 +105,5 @@ console.log(graph);
 
 console.log("BFS");
 graph.BFS("2");
+console.log("\nDFS");
+graph.DFS("2");
