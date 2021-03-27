@@ -16,6 +16,8 @@
    ends at the same vertex.
 */
 
+const { Queue } = require("./Queue");
+
 class Graph {
   constructor() {
     this.numberOfNodes = 0;
@@ -31,6 +33,26 @@ class Graph {
     // graph is bi-directional.
     this.adjacencyList[u].push(v);
     this.adjacencyList[v].push(u);
+  }
+
+  BFS(u) {
+    const visited = {};
+    const queue = new Queue();
+    visited[u] = true;
+    queue.enqueue(u);
+
+    while (!queue.isEmpty()) {
+      const current = queue.dequeue();
+
+      process.stdout.write(`${current} `);
+
+      for (let v of this.adjacencyList[current]) {
+        if (!visited[v]) {
+          visited[v] = true;
+          queue.enqueue(v);
+        }
+      }
+    }
   }
 }
 
@@ -59,3 +81,6 @@ graph.addEdge("4", "5");
 graph.addEdge("5", "6");
 
 console.log(graph);
+
+console.log("BFS");
+graph.BFS("2");
