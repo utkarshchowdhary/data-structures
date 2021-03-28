@@ -21,19 +21,17 @@ const { Stack } = require("./stack-with-array");
 
 class Graph {
   constructor() {
-    this.numberOfNodes = 0;
-    this.adjacencyList = {};
+    this.adjacencyList = new Map();
   }
 
   addVertex(node) {
-    this.adjacencyList[node] = [];
-    this.numberOfNodes++;
+    this.adjacencyList.set(node, new Set());
   }
 
   addEdge(u, v) {
     // graph is bi-directional.
-    this.adjacencyList[u].push(v);
-    this.adjacencyList[v].push(u);
+    this.adjacencyList.get(u).add(v);
+    this.adjacencyList.get(v).add(u);
   }
 
   BFS(u) {
@@ -54,7 +52,7 @@ class Graph {
 
       // add all non-visited neighbouring nodes of the current node to the queue
       // and set them as visited so that they won't be added again.
-      for (let v of this.adjacencyList[current]) {
+      for (const v of this.adjacencyList.get(current)) {
         if (!visited.has(v)) {
           visited.add(v);
           queue.enqueue(v);
@@ -81,7 +79,7 @@ class Graph {
 
       // add all non-visited neighbouring nodes of the current node to the stack
       // and set them as visited so that they won't be added again.
-      for (let v of this.adjacencyList[current]) {
+      for (const v of this.adjacencyList.get(current)) {
         if (!visited.has(v)) {
           visited.add(v);
           stack.push(v);
@@ -97,7 +95,7 @@ class Graph {
     visited.add(u);
     process.stdout.write(`${u} `);
 
-    for (let v of this.adjacencyList[u]) {
+    for (const v of this.adjacencyList.get(u)) {
       if (!visited.has(v)) {
         this.DFSRecursive(v, visited);
       }
