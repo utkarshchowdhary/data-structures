@@ -99,9 +99,9 @@ class PriorityQueue {
 
 // const tree = new PriorityQueue();
 /*
-      4
-    6  31
-  3 5
+      31
+    5  3
+  4 6
 */
 // tree.enqueue(3, 2);
 // tree.enqueue(4, 5);
