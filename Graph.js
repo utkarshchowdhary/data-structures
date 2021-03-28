@@ -25,7 +25,7 @@ class Graph {
   }
 
   addVertex(node) {
-    this.adjacencyList.set(node, new Set());
+    if (!this.adjacencyList.has(node)) this.adjacencyList.set(node, new Set());
   }
 
   addEdge(u, v) {
