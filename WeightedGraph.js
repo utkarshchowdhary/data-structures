@@ -56,6 +56,52 @@ class WeightedGraph {
     }
     return { dist, prev };
   }
+
+  bellmanFord(source) {
+    // The Bellman-Ford algorithm is a SSSP algorithm.
+    const dist = new Map();
+    const prev = new Map();
+
+    for (const v of this.adjacencyList.keys()) {
+      if (v === source) {
+        dist.set(source, 0); // distance from source to itself is zero.
+        prev.set(source, null); // source vertex dosen't have a predecessor.
+      } else {
+        dist.set(v, Infinity); // unknown distance from source to each node it set to infinity.
+      }
+    }
+
+    // relax edges repeatedly.
+    // relaxation works by continuously shortening the calculated distance between vertices
+    // by comparing that distance with other known distances.
+    for (let i = 0; i < this.adjacencyList.size - 1; i++) {
+      for (const [u, edges] of this.adjacencyList) {
+        for (const [v, w] of edges) {
+          const alt = dist.get(u) + w;
+          if (alt < dist.get(v)) {
+            dist.set(v, alt);
+            prev.set(v, u);
+          }
+        }
+      }
+    }
+
+    // detect nodes which are part of negative-weight cycle.
+    // if there exists a negative cycle in the graph, then there is no shortest path.
+    // going around the negative cycle an infinite number of times would continue to decrease
+    // the cost of the path.
+    for (let i = 0; i < this.adjacencyList.size - 1; i++) {
+      for (const [u, edges] of this.adjacencyList) {
+        for (const [v, w] of edges) {
+          const alt = dist.get(u) + w;
+          if (alt < dist.get(v)) {
+            dist.set(v, -Infinity);
+          }
+        }
+      }
+    }
+    return { dist, prev };
+  }
 }
 
 const graph = new WeightedGraph();
@@ -90,3 +136,33 @@ console.log(graph);
 
 console.log("Dijkstra's Shortest Path Algorithm");
 console.log(graph.Dijkstra(0));
+
+const negWtGraph = new WeightedGraph();
+negWtGraph.addVertex(0);
+negWtGraph.addVertex(1);
+negWtGraph.addVertex(2);
+negWtGraph.addVertex(3);
+negWtGraph.addVertex(4);
+negWtGraph.addVertex(5);
+negWtGraph.addVertex(6);
+negWtGraph.addVertex(7);
+negWtGraph.addVertex(8);
+negWtGraph.addVertex(9);
+negWtGraph.addEdge(0, 1, 5);
+negWtGraph.addEdge(1, 2, 20);
+negWtGraph.addEdge(1, 5, 30);
+negWtGraph.addEdge(1, 6, 60);
+negWtGraph.addEdge(2, 3, 10);
+negWtGraph.addEdge(2, 4, 75);
+negWtGraph.addEdge(3, 2, -15);
+negWtGraph.addEdge(4, 9, 100);
+negWtGraph.addEdge(5, 4, 25);
+negWtGraph.addEdge(5, 6, 5);
+negWtGraph.addEdge(5, 8, 50);
+negWtGraph.addEdge(6, 7, -50);
+negWtGraph.addEdge(7, 8, -10);
+
+console.log(negWtGraph);
+
+console.log("Bellman Ford Shortest Path Algorithm");
+console.log(negWtGraph.bellmanFord(0));
