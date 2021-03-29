@@ -96,6 +96,7 @@ class WeightedGraph {
           const alt = dist.get(u) + w;
           if (alt < dist.get(v)) {
             dist.set(v, -Infinity);
+            prev.set(v, u);
           }
         }
       }
