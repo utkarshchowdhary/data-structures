@@ -11,7 +11,6 @@ class WeightedGraph {
 
   addEdge(u, v, w) {
     this.adjacencyList.get(u).set(v, w);
-    this.adjacencyList.get(v).set(u, w);
   }
 
   Dijkstra(source) {
