@@ -20,6 +20,10 @@ class BinaryHeap {
     this.values = [];
   }
 
+  isEmpty() {
+    return this.values.length === 0;
+  }
+
   add(value) {
     // adding a new node can be done by simply pushing it onto an array
     // then "bubbling up" new node's value if greater than parent.
