@@ -24,7 +24,7 @@ class WeightedGraph {
     const prev = new Map();
     const visited = new Set();
 
-    for (const v of this.adjacencyList.keys()) {
+    for (const [v] of this.adjacencyList) {
       if (v === source) {
         dist.set(source, 0); // distance from source to itself is zero.
         prev.set(source, null); // source vertex dosen't have a predecessor.
@@ -62,7 +62,7 @@ class WeightedGraph {
     const dist = new Map();
     const prev = new Map();
 
-    for (const v of this.adjacencyList.keys()) {
+    for (const [v] of this.adjacencyList) {
       if (v === source) {
         dist.set(source, 0); // distance from source to itself is zero.
         prev.set(source, null); // source vertex dosen't have a predecessor.
