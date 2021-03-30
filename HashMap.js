@@ -25,7 +25,7 @@ class HashMap {
 
   hash(s) {
     let hashValue = 0;
-    const stringKey = s.toString();
+    const stringKey = `${s}`;
 
     for (let index = 0; index < stringKey.length; index++) {
       const charCode = stringKey.charCodeAt(index);
@@ -41,19 +41,14 @@ class HashMap {
     return bucketIndex;
   }
 
-  _getKeyIndex(key) {
-    return this.keys.findIndex((val) => val.content === key);
-  }
-
   _getIndexes(key) {
     const bucketIndex = this._getBucketIndex(key);
-    const keyIndex = this._getKeyIndex(key);
     const values = this.buckets[bucketIndex] || [];
 
     for (let entryIndex = 0; entryIndex < values.length; entryIndex++) {
       const entry = values[entryIndex];
       if (entry.key === key) {
-        return { bucketIndex, entryIndex, keyIndex };
+        return { bucketIndex, entryIndex, keyIndex: entry.keyIndex };
       }
     }
 
@@ -62,23 +57,16 @@ class HashMap {
 
   get(key) {
     const { bucketIndex, entryIndex } = this._getIndexes(key);
-
-    if (entryIndex === undefined) {
-      return;
+    if (entryIndex !== undefined) {
+      return this.buckets[bucketIndex][entryIndex].value;
     }
-
-    return this.buckets[bucketIndex][entryIndex].value;
-  }
-
-  has(key) {
-    return !!this.get(key);
   }
 
   set(key, value) {
     const { bucketIndex, entryIndex } = this._getIndexes(key);
 
     if (entryIndex === undefined) {
-      const keyIndex = this.keys.push({ content: key }) - 1; // keep track of the key index
+      const keyIndex = this.keys.push({ content: key }) - 1;
       this.buckets[bucketIndex] = this.buckets[bucketIndex] || [];
       this.buckets[bucketIndex].push({ key, value, keyIndex });
       this.size++;
@@ -112,15 +100,13 @@ class HashMap {
   delete(key) {
     const { bucketIndex, entryIndex, keyIndex } = this._getIndexes(key);
 
-    if (entryIndex === undefined) {
-      return false;
+    if (entryIndex !== undefined) {
+      this.buckets[bucketIndex].splice(entryIndex, 1);
+      this.keys.splice(keyIndex, 1);
+      this.size--;
+      return true;
     }
-
-    this.buckets[bucketIndex].splice(entryIndex, 1);
-    this.keys.splice(keyIndex, 1);
-    this.size--;
-
-    return true;
+    return false;
   }
 }
 
@@ -130,14 +116,11 @@ hashMap.set("De Una Vez", "Selena Gomez");
 hashMap.set("Robbery", "Juice Wrld");
 hashMap.set("Bad Liar", "Imagin Dragons");
 hashMap.set("Surrender", "Natalie Taylor");
-
 hashMap.set("Pineapple", "Pen Pineapple Apple Pen");
 hashMap.set("Despacito", "Luis Fonsi");
 hashMap.set("Bailando", "Enrique Iglesias");
 hashMap.set("Dura", "Daddy Yankee");
-
 hashMap.set("Lean On", "Major Lazer"); // <--- Trigger REHASH
-
 hashMap.set("When We Were Young", "Adele");
 hashMap.set("All About That Bass", "Meghan Trainor");
 hashMap.set("This Is What You Came For", "Calvin Harris ");
