@@ -18,6 +18,10 @@ class PriorityQueue {
     this.count = 0;
   }
 
+  isEmpty() {
+    return this.values.length === 0;
+  }
+
   enqueue(value, priority) {
     // adding a new node can be done by simply pushing it onto an array
     // then "bubbling up" the new node if its priority is greater than its parent's priority.
