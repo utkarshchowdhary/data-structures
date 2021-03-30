@@ -22,11 +22,13 @@ class LinkedList {
 
     if (this.head) {
       this.tail.next = node;
+      node.next = this.head;
+      this.tail = node;
     } else {
       this.head = node;
+      this.tail = node;
+      this.tail.next = this.head;
     }
-    this.tail = node;
-    this.tail.next = this.head;
     this.size++;
   }
 
@@ -35,11 +37,13 @@ class LinkedList {
 
     if (this.head) {
       node.next = this.head;
+      this.tail.next = node;
+      this.head = node;
     } else {
       this.tail = node;
+      this.head = node;
+      this.tail.next = this.head;
     }
-    this.head = node;
-    this.tail.next = this.head;
     this.size++;
   }
 
