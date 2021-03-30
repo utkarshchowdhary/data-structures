@@ -119,7 +119,7 @@ class BinaryTree {
           // if the peeked node dosn't have a right child
           // or it's right child is equal to last visited node i.e., it is already traversed,
           // print it's value and keep track of last visited node.
-          process.stdout.write(`${current.value} `);
+          process.stdout.write(`${peekNode.value} `);
           previous = stack.pop();
         }
       }
