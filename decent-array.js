@@ -8,7 +8,7 @@
 
   Cons:
   -Slow inserts (needs to shift remaining, whenever its not at the end)
-  -Slow Deletes ("")
+  -Slow Deletes (’’)
   -Fixed size (in case of static array)
 */
 
