@@ -26,9 +26,8 @@ function merge(left, right) {
 
 function mergeSort(array) {
   const length = array.length;
-  if (length < 2) {
-    return array;
-  }
+  if (length < 2) return array;
+
   const middle = Math.floor(length / 2);
   const left = Array(middle);
   const right = Array(length - middle);
@@ -40,6 +39,7 @@ function mergeSort(array) {
       right[i - middle] = array[i];
     }
   }
+
   return merge(mergeSort(left), mergeSort(right));
 }
 
