@@ -18,7 +18,7 @@
   Types:
   -In full binary tree every node has either 0 or 2 children.
   -In Complete Binary Tree all levels are completely filled 
-   except possibly the last level and the leaf nodes lean towards left.
+   except possibly the last level where the leaf nodes lean towards left.
   -In Perfect Binary Tree all the internal nodes have two children and 
    all leaf nodes are at the same level.
   -A degenerate or pathological tree has a single child either left or right associated with a parent node.
