@@ -21,6 +21,7 @@ function merge(left, right) {
   for (; j < right.length; j++, k++) {
     result[k] = right[j];
   }
+
   return result;
 }
 

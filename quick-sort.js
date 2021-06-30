@@ -7,10 +7,12 @@ function quickSort(a, low, high) {
         partitionIndex++;
       }
     }
+
     [a[partitionIndex], a[high]] = [a[high], a[partitionIndex]];
 
     quickSort(a, low, partitionIndex - 1);
     quickSort(a, partitionIndex + 1, high);
+
     return a;
   }
 }
