@@ -50,11 +50,11 @@ class BinaryHeap {
     // replace the root node with the "fartest right node" on the lowest level of the heap.
     const max = this.values[0];
     const end = this.values.pop();
+
     // if there are no nodes left in the heap after removing the last node,
     // i.e., initially it was empty or only had one node, end here.
-    if (this.values.length === 0) {
-      return max;
-    }
+    if (this.values.length === 0) return max;
+
     this.values[0] = end;
 
     let index = 0;
@@ -95,6 +95,7 @@ class BinaryHeap {
       this.values[largest] = current;
       index = largest;
     }
+
     return max;
   }
 }

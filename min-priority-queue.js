@@ -37,9 +37,9 @@ class PriorityQueue {
   dequeue() {
     const min = this.values[0];
     const end = this.values.pop();
-    if (this.values.length === 0) {
-      return min;
-    }
+
+    if (this.values.length === 0) return min;
+
     this.values[0] = end;
 
     let index = 0;
@@ -54,6 +54,7 @@ class PriorityQueue {
 
       if (leftChildIndex < length) {
         leftChild = this.values[leftChildIndex];
+
         if (leftChild.priority < current.priority) {
           smallest = leftChildIndex;
         } else if (
@@ -66,6 +67,7 @@ class PriorityQueue {
 
       if (rightChildIndex < length) {
         rightChild = this.values[rightChildIndex];
+
         if (smallest === index) {
           if (rightChild.priority < current.priority) {
             smallest = rightChildIndex;
@@ -93,6 +95,7 @@ class PriorityQueue {
       this.values[smallest] = current;
       index = smallest;
     }
+
     return min;
   }
 }
