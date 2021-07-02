@@ -50,6 +50,7 @@ class Treap {
         node = this.rotate_left(node);
       }
     }
+
     return node;
   }
 
@@ -85,6 +86,7 @@ class Treap {
         return null;
       }
     }
+
     return node;
   }
 }

@@ -77,6 +77,7 @@ class BinarySearchTree {
         current = current.right;
       }
     }
+
     return current;
   }
 
@@ -213,6 +214,7 @@ class BinarySearchTree {
         return null;
       }
     }
+
     return node;
   }
 }
