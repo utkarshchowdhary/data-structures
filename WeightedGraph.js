@@ -54,6 +54,7 @@ class WeightedGraph {
         visited.add(u);
       }
     }
+
     return { dist, prev };
   }
 
@@ -101,6 +102,7 @@ class WeightedGraph {
         }
       }
     }
+
     return { dist, prev };
   }
 }
