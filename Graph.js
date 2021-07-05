@@ -88,10 +88,7 @@ class Graph {
     }
   }
 
-  DFSRecursive(u, visited) {
-    if (!visited) {
-      visited = new Set();
-    }
+  DFSRecursive(u, visited = new Set()) {
     visited.add(u);
     process.stdout.write(`${u} `);
 
