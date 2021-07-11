@@ -1,3 +1,5 @@
+// counting sort works well when the range of the integers to be sorted isn't to wide.
+
 function countingSort(arr) {
   const n = arr.length;
   const r = new Array(n);
