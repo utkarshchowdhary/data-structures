@@ -1,4 +1,4 @@
-// counting sort works well when the range of the integers to be sorted isn't to wide.
+// counting sort works well when the range of the integers to be sorted isn't too wide.
 
 function countingSort(arr) {
   const n = arr.length;
