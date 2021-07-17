@@ -88,13 +88,17 @@ class Graph {
     }
   }
 
-  DFSRecursive(u, visited = new Set()) {
+  DFSRecursive(u) {
+    this._DFSRecursive(u, new Set());
+  }
+
+  _DFSRecursive(u, visited) {
     visited.add(u);
     process.stdout.write(`${u} `);
 
     for (const v of this.adjacencyList.get(u)) {
       if (!visited.has(v)) {
-        this.DFSRecursive(v, visited);
+        this._DFSRecursive(v, visited);
       }
     }
   }
