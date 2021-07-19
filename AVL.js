@@ -145,7 +145,7 @@ class AVL {
       node.right = this._remove(node.right, value);
     } else {
       if (node.left && node.right) {
-        // remove from subtree with greatest height.
+        // remove from subtree with the greatest height.
         if (node.left.height > node.right.height) {
           node.value = this.findMax(node.left);
           node.left = this._remove(node.left, node.value);
