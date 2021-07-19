@@ -179,12 +179,9 @@ class BinarySearchTree {
     }
   }
 
-  find_min(node) {
-    let current_node = node;
-    while (current_node.left) {
-      current_node = current_node.left;
-    }
-    return current_node;
+  findMin(node) {
+    while (node.left) node = node.left;
+    return node.value;
   }
 
   delete(value) {
@@ -200,7 +197,7 @@ class BinarySearchTree {
       if (node.left && node.right) {
         // If the node has two children.
         // Place the inorder successor in position of the node to be deleted.
-        node.value = this.find_min(node.right).value;
+        node.value = this.findMin(node.right);
         // Delete the inorder successor.
         node.right = this._delete(node.right, node.value);
       } else if (node.left) {
