@@ -13,7 +13,7 @@ class Node {
   }
 }
 
-class AVL {
+class AVLTree {
   constructor() {
     this.root = null;
   }
@@ -180,7 +180,7 @@ class AVL {
   }
 }
 
-const tree = new AVL();
+const tree = new AVLTree();
 /*
     2
   1  4
