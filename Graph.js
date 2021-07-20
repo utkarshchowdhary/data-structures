@@ -20,9 +20,7 @@ const { Queue } = require("./Queue");
 const { Stack } = require("./stack-with-array");
 
 class Graph {
-  constructor() {
-    this.adjacencyList = new Map();
-  }
+  adjacencyList = new Map();
 
   addVertex(node) {
     if (!this.adjacencyList.has(node)) this.adjacencyList.set(node, new Set());

@@ -15,9 +15,7 @@ class Node {
 }
 
 class BinarySearchTree {
-  constructor() {
-    this.root = null;
-  }
+  root = null;
 
   insert_iteratively(value) {
     if (!this.root) {

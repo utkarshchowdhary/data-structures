@@ -16,31 +16,29 @@
 */
 
 class BinaryHeap {
-  constructor() {
-    this.values = [];
-  }
+  heap = new Array();
 
   isEmpty() {
-    return this.values.length === 0;
+    return this.heap.length === 0;
   }
 
   add(value) {
     // adding a new node can be done by simply pushing it onto an array
     // then "bubbling up" new node's value if greater than parent.
-    this.values.push(value);
-    let index = this.values.length - 1;
-    const current = this.values[index];
+    this.heap.push(value);
+    let index = this.heap.length - 1;
+    const current = this.heap[index];
 
     // When index is at 0, can not go up any further.
     while (index > 0) {
       let parentIndex = Math.floor((index - 1) / 2);
-      let parent = this.values[parentIndex];
+      let parent = this.heap[parentIndex];
 
       // if the current node is greater than its parent,
       // swap them and save its parent's index which will be the next current.
       if (current > parent) {
-        this.values[parentIndex] = current;
-        this.values[index] = parent;
+        this.heap[parentIndex] = current;
+        this.heap[index] = parent;
         index = parentIndex;
       } else break;
     }
@@ -48,18 +46,18 @@ class BinaryHeap {
 
   extractMax() {
     // replace the root node with the "fartest right node" on the lowest level of the heap.
-    const max = this.values[0];
-    const end = this.values.pop();
+    const max = this.heap[0];
+    const end = this.heap.pop();
 
     // if there are no nodes left in the heap after removing the last node,
     // i.e., initially it was empty or only had one node, end here.
-    if (this.values.length === 0) return max;
+    if (this.heap.length === 0) return max;
 
-    this.values[0] = end;
+    this.heap[0] = end;
 
     let index = 0;
-    const length = this.values.length;
-    const current = this.values[0];
+    const length = this.heap.length;
+    const current = this.heap[0];
 
     while (true) {
       let leftChildIndex = 2 * index + 1;
@@ -69,7 +67,7 @@ class BinaryHeap {
 
       // if the left child exists.
       if (leftChildIndex < length) {
-        leftChild = this.values[leftChildIndex];
+        leftChild = this.heap[leftChildIndex];
         // if left child is greater than current node set its index to largest.
         if (leftChild > current) {
           largest = leftChildIndex;
@@ -78,7 +76,7 @@ class BinaryHeap {
 
       // if the right child exists.
       if (rightChildIndex < length) {
-        rightChild = this.values[rightChildIndex];
+        rightChild = this.heap[rightChildIndex];
         // if right child is greater than the greatest between current node and left child
         // set its index to largest.
         if (rightChild > (largest === index ? current : leftChild)) {
@@ -91,8 +89,8 @@ class BinaryHeap {
 
       // Otherwise, swap current node with the largest node and
       // save its position which will be the next current.
-      this.values[index] = this.values[largest];
-      this.values[largest] = current;
+      this.heap[index] = this.heap[largest];
+      this.heap[largest] = current;
       index = largest;
     }
 

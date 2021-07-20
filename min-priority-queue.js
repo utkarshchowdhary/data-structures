@@ -7,44 +7,42 @@ class Node {
 }
 
 class PriorityQueue {
-  constructor() {
-    this.values = [];
-    this.count = 0;
-  }
+  heap = new Array();
+  count = 0;
 
   isEmpty() {
-    return this.values.length === 0;
+    return this.heap.length === 0;
   }
 
   enqueue(value, priority) {
     const node = new Node(value, priority, this.count++);
-    this.values.push(node);
-    let index = this.values.length - 1;
-    const current = this.values[index];
+    this.heap.push(node);
+    let index = this.heap.length - 1;
+    const current = this.heap[index];
 
     while (index > 0) {
       let parentIndex = Math.floor((index - 1) / 2);
-      let parent = this.values[parentIndex];
+      let parent = this.heap[parentIndex];
 
       if (current.priority < parent.priority) {
-        this.values[parentIndex] = current;
-        this.values[index] = parent;
+        this.heap[parentIndex] = current;
+        this.heap[index] = parent;
         index = parentIndex;
       } else break;
     }
   }
 
   dequeue() {
-    const min = this.values[0];
-    const end = this.values.pop();
+    const min = this.heap[0];
+    const end = this.heap.pop();
 
-    if (this.values.length === 0) return min;
+    if (this.heap.length === 0) return min;
 
-    this.values[0] = end;
+    this.heap[0] = end;
 
     let index = 0;
-    const length = this.values.length;
-    const current = this.values[0];
+    const length = this.heap.length;
+    const current = this.heap[0];
 
     while (true) {
       let leftChildIndex = 2 * index + 1;
@@ -53,7 +51,7 @@ class PriorityQueue {
       let smallest = index;
 
       if (leftChildIndex < length) {
-        leftChild = this.values[leftChildIndex];
+        leftChild = this.heap[leftChildIndex];
 
         if (leftChild.priority < current.priority) {
           smallest = leftChildIndex;
@@ -66,7 +64,7 @@ class PriorityQueue {
       }
 
       if (rightChildIndex < length) {
-        rightChild = this.values[rightChildIndex];
+        rightChild = this.heap[rightChildIndex];
 
         if (smallest === index) {
           if (rightChild.priority < current.priority) {
@@ -91,8 +89,8 @@ class PriorityQueue {
 
       if (smallest === index) break;
 
-      this.values[index] = this.values[smallest];
-      this.values[smallest] = current;
+      this.heap[index] = this.heap[smallest];
+      this.heap[smallest] = current;
       index = smallest;
     }
 

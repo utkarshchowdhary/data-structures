@@ -14,9 +14,7 @@ class Node {
 }
 
 class AVLTree {
-  constructor() {
-    this.root = null;
-  }
+  root = null;
 
   contains(value) {
     return this._contains(this.root, value);

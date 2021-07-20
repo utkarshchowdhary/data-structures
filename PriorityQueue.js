@@ -13,33 +13,31 @@ class Node {
 }
 
 class PriorityQueue {
-  constructor() {
-    this.values = [];
-    this.count = 0;
-  }
+  heap = new Array();
+  count = 0;
 
   isEmpty() {
-    return this.values.length === 0;
+    return this.heap.length === 0;
   }
 
   enqueue(value, priority) {
     // adding a new node can be done by simply pushing it onto an array
     // then "bubbling up" the new node if its priority is greater than its parent's priority.
     const node = new Node(value, priority, this.count++);
-    this.values.push(node);
-    let index = this.values.length - 1;
-    const current = this.values[index];
+    this.heap.push(node);
+    let index = this.heap.length - 1;
+    const current = this.heap[index];
 
     // When index is at 0, can not go up any further.
     while (index > 0) {
       let parentIndex = Math.floor((index - 1) / 2);
-      let parent = this.values[parentIndex];
+      let parent = this.heap[parentIndex];
 
       // if the current node's priority is greater than its parent's priority,
       // swap them and save its parent's index which will be the next current.
       if (current.priority > parent.priority) {
-        this.values[parentIndex] = current;
-        this.values[index] = parent;
+        this.heap[parentIndex] = current;
+        this.heap[index] = parent;
         index = parentIndex;
       } else break;
     }
@@ -47,18 +45,18 @@ class PriorityQueue {
 
   dequeue() {
     // replace the root node with the "fartest right node" on the lowest level of the heap.
-    const max = this.values[0];
-    const end = this.values.pop();
+    const max = this.heap[0];
+    const end = this.heap.pop();
 
     // if there are no nodes left in the heap after removing the last node,
     // i.e., initially it was empty or only had one node, end here.
-    if (this.values.length === 0) return max;
+    if (this.heap.length === 0) return max;
 
-    this.values[0] = end;
+    this.heap[0] = end;
 
     let index = 0;
-    const length = this.values.length;
-    const current = this.values[0];
+    const length = this.heap.length;
+    const current = this.heap[0];
 
     while (true) {
       let leftChildIndex = 2 * index + 1;
@@ -68,7 +66,7 @@ class PriorityQueue {
 
       // if the left child exists.
       if (leftChildIndex < length) {
-        leftChild = this.values[leftChildIndex];
+        leftChild = this.heap[leftChildIndex];
         // if left child's priority is greater than current node's priority set its index to largest.
         if (leftChild.priority > current.priority) {
           largest = leftChildIndex;
@@ -85,7 +83,7 @@ class PriorityQueue {
 
       // if the right child exists.
       if (rightChildIndex < length) {
-        rightChild = this.values[rightChildIndex];
+        rightChild = this.heap[rightChildIndex];
         // if current node's priority was greater than left child or
         // if priorities were same its order is smaller than left child.
         if (largest === index) {
@@ -126,8 +124,8 @@ class PriorityQueue {
 
       // Otherwise, swap current node with the largest node and
       // save its position which will be the next current.
-      this.values[index] = this.values[largest];
-      this.values[largest] = current;
+      this.heap[index] = this.heap[largest];
+      this.heap[largest] = current;
       index = largest;
     }
 

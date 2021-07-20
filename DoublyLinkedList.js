@@ -12,11 +12,9 @@ class Node {
 }
 
 class LinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.size = 0;
-  }
+  head = null;
+  tail = null;
+  size = 0;
 
   append(value) {
     const node = new Node(value);

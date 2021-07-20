@@ -37,9 +37,7 @@ class Node {
 }
 
 class BinaryTree {
-  constructor() {
-    this.root = null;
-  }
+  root = null;
 
   preOrderTraversalIterative() {
     if (!this.root) return;

@@ -13,11 +13,9 @@ class Node {
 }
 
 class Queue {
-  constructor() {
-    this.first = null;
-    this.last = null;
-    this.size = 0;
-  }
+  first = null;
+  last = null;
+  size = 0;
 
   isEmpty() {
     return this.first === null;

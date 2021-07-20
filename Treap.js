@@ -10,9 +10,7 @@ class Node {
 }
 
 class Treap {
-  constructor() {
-    this.root = null;
-  }
+  root = null;
 
   rotate_left(node) {
     // rotate node in counter-clockwise direction.

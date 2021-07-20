@@ -13,10 +13,9 @@
 */
 
 class DecentArray {
-  constructor() {
-    this.length = 0;
-    this.data = {};
-  }
+  length = 0;
+  data = {};
+
   get(index) {
     return this.data[index];
   }

@@ -1,9 +1,7 @@
 const { PriorityQueue } = require("./min-priority-queue");
 
 class WeightedGraph {
-  constructor() {
-    this.adjacencyList = new Map();
-  }
+  adjacencyList = new Map();
 
   addVertex(node) {
     if (!this.adjacencyList.has(node)) this.adjacencyList.set(node, new Map());

@@ -1,33 +1,21 @@
 class Stack {
-  constructor() {
-    this.array = [];
-  }
+  stack = new Array();
 
   isEmpty() {
-    return this.array.length === 0;
+    return this.stack.length === 0;
   }
 
   peek() {
-    return this.array[this.array.length - 1];
+    return this.stack[this.stack.length - 1];
   }
 
   push(value) {
-    return this.array.push(value);
+    return this.stack.push(value);
   }
 
   pop() {
-    return this.array.pop();
+    return this.stack.pop();
   }
 }
-
-// const stack = new Stack();
-
-// stack.push("google");
-// stack.push("yahoo");
-// stack.push("bing");
-
-// stack.pop();
-
-// console.log(stack);
 
 exports.Stack = Stack;

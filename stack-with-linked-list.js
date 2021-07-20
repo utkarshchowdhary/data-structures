@@ -13,10 +13,8 @@ class Node {
 }
 
 class Stack {
-  constructor() {
-    this.top = null;
-    this.size = 0;
-  }
+  top = null;
+  size = 0;
 
   isEmpty() {
     return this.top === null;
