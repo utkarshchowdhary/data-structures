@@ -1,19 +1,19 @@
-/*
-  -Binary heaps are only allowed to have at most 2 children to a parent.
-  -Unlike with binary search trees, where we compared and organized our values across siblings, 
-   with heaps we only work between parents and their children.
-  -The heap can either be a max heap or a min heap.
-  -In a max heap all internal nodes have value greater than or equal to the values in it's children.
-  -In a min heap all internal nodes have value less than or equal to the values in it's children.
-  -Heap is always balanced because every new node will be added to a level from left to right until full.
-
-  Properties:
-  -The largest or the smallest element can be quickly found in a heap.
-  -There is a consistent pattern for finding a node's children, 
-   a node's left child will be at position 2i+1 and right child being at position 2i+2,
-   with i being the parent index.
-  -A node's parent will be at position floor((i-1)/2) with i being the child node's index.
-*/
+/**
+ * Binary heaps are only allowed to have at most 2 children to a parent.
+ * Unlike with binary search trees, where we compared and organized our values across siblings,
+ * with heaps we only work between parents and their children.
+ * The heap can either be a max heap or a min heap.
+ * In a max heap all internal nodes have value greater than or equal to the values in it's children.
+ * In a min heap all internal nodes have value less than or equal to the values in it's children.
+ * Heap is always balanced because every new node will be added to a level from left to right until full.
+ *
+ * Properties
+ * The largest or the smallest element can be quickly found in a heap.
+ * There is a consistent pattern for finding a node's children,
+ * a node's left child will be at position 2i+1 and right child being at position 2i+2,
+ * with i being the parent index.
+ * A node's parent will be at position floor((i-1)/2) with i being the child node's index.
+ */
 
 class BinaryHeap {
   heap = new Array();

@@ -1,6 +1,7 @@
 /**
  * An AVL tree is a self balancing binary search tree in which for each node
- * the difference between the height of the left subtree and that of the right subtree differ by at most one.
+ * the difference between the height of the left subtree and that of the right subtree
+ * differ by at most one.
  */
 
 class Node {

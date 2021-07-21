@@ -1,9 +1,9 @@
-/*
-  -A Stack is a linear data structure in which elements can be inserted and deleted only from one end 
-  of the list.
-  -Stacks are based on the LIFO principle, i.e., the element inserted at the last, is the first element to 
-  come out of the list.
-*/
+/**
+ * A Stack is a linear data structure in which elements can be inserted and deleted only from one end
+ * of the list.
+ * Stacks are based on the LIFO principle, i.e., the element inserted at the last, is the first element to
+ * come out of the list.
+ */
 
 class Node {
   constructor(value) {

@@ -1,7 +1,7 @@
-/*
-  -In Doubly Linked List nodes have double references (next and previous).
-  -Doubly Linked List allow 2 way travesal.
-*/
+/**
+ * In Doubly Linked List nodes have double references (previous and next).
+ * Doubly Linked List allow 2 way travesal.
+ */
 
 class Node {
   constructor(value) {

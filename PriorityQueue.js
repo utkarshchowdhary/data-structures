@@ -1,8 +1,8 @@
-/*
-  -In Priority Queue the data organized by importance rather than when it was added.
-  -A node with higher priority is served before a node with lower priority.
-  -When the priorities on nodes are same, they are served according to the order in which they were added.
-*/
+/**
+ * In Priority Queue the data organized by importance rather than when it was added.
+ * A node with higher priority is served before a node with lower priority.
+ * When the priorities on nodes are same, they are served according to the order in which they were added.
+ */
 
 class Node {
   constructor(value, priority, order) {

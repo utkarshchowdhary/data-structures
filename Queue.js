@@ -1,9 +1,9 @@
-/*
-  -A Queue is a linear data structure in which insertion and deletion happens on different ends 
-  of the list.
-  -Queues are based on the FIFO principle, i.e., the least recently added element, is the first element to 
-  come out of the list.
-*/
+/**
+ * A Queue is a linear data structure in which insertion and deletion happens on different ends
+ * of the list.
+ * Queues are based on the FIFO principle, i.e., the least recently added element, is the first element to
+ * come out of the list.
+ */
 
 class Node {
   constructor(value) {

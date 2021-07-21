@@ -1,18 +1,9 @@
-/*
-  -HashMaps uses labels that could be a string, number, Object, or anything. 
-  -Internally, the HashMap uses an Array, and it maps the labels to array indexes using a hash function.
-  -The main difference between an array and hashmap is that the Array’s index doesn’t have any relationship 
-   with the data.
-
-   Pros:
-   -Fast Lookups
-   -Fast inserts
-   -Flexible Keys
-
-   cons:
-   -Unordered
-   -Slow key iteration
-*/
+/**
+ * HashMaps uses labels that could be a string, number, Object, or anything.
+ * Internally, the HashMap uses an Array, and it maps the labels to array indexes using a hash function.
+ * The main difference between an array and hashmap is that the array’s index doesn’t have any relationship
+ * with the data.
+ */
 
 class HashMap {
   constructor(initialCapacity = 16, loadFactor = 0.5) {

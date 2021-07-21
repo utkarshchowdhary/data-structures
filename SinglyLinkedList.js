@@ -1,13 +1,12 @@
-/*
-  -Linked List is a data structure where every element is connected to the next one.
-  -A node in Singly Linked List contains a set of values, the value of the data you want to store and 
-   a pointer to the next node in line.
-
-  -Most computers have caching system that make reading from sequential memory faster than reading from
-   scattered addresses. So, traversing through a linked list is slower than iterating through an array.
-   Even though both of them are O(n).
-  -However insert and delete in middle of linked list is a lot better than array.  
-*/
+/**
+ * Linked List is a data structure where every element is connected to the next one.
+ * A node in Singly Linked List contains a set of values, the value of the data you want to store and
+ * a pointer to the next node in line.
+ * Most computers have caching system that make reading from sequential memory faster than reading from
+ * scattered addresses. So, traversing through a linked list is slower than iterating through an array,
+ * even though both of them are O(n).
+ * However insert and delete in middle of linked list is a lot better than array.
+ */
 
 class Node {
   constructor(value) {

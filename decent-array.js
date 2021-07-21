@@ -1,17 +1,3 @@
-/*
-  -In JavaScript arrays are just objects with integer based keys.
-  
-  Pros:
-  -Fast lookups
-  -Fast push/pop
-  -Ordered (close to each other in memory)
-
-  Cons:
-  -Slow inserts (needs to shift remaining, whenever its not at the end)
-  -Slow Deletes (’’)
-  -Fixed size (in case of static array)
-*/
-
 class DecentArray {
   length = 0;
   data = {};

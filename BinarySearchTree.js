@@ -1,10 +1,10 @@
-/*
-  -In Binary Search Tree all internal nodes have value greater than values in it's left subtree and 
-   less than those in it's right subtree.
-  -In a balanced binary search tree each comparison skips about half of the remaining tree, 
-   so the whole lookup takes time proportional to the binary logarithm of the number of items 
-   stored in the tree.
-*/
+/**
+ * In Binary Search Tree all internal nodes have value greater than values in it's left subtree and
+ * less than those in it's right subtree.
+ * In a balanced binary search tree each comparison skips about half of the remaining tree,
+ * so the whole lookup takes time proportional to the binary logarithm of the number of items
+ * stored in the tree.
+ */
 
 class Node {
   constructor(value) {

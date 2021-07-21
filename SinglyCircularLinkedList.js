@@ -1,7 +1,7 @@
-/*
-  -Circular linked list is a linked list where all nodes are connected to form a circle. 
-  -The last element of a circular linked list points to the head instead of pointing to null.
-*/
+/**
+ * Circular linked list is a linked list where all nodes are connected to form a circle.
+ * The last element of a circular linked list points to the head instead of pointing to null.
+ */
 
 class Node {
   constructor(value) {

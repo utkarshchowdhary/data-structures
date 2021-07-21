@@ -1,20 +1,20 @@
-/*
-  -A Graph is a non-linear data structure consisting of a set of vertices (also called nodes) 
-   and set of unordered edges for an undirected graph or set of ordered edges for an directed graph, 
-   where each edge connects two vertices.
-  -Nodes are entities whose relationships are expressed using edges.
-  -Edges are the components that are used to represent the relationships between various nodes in a graph. 
-  -An edge between two nodes expresses a one-way or two-way relationship between the nodes.
-
-  Types:
-  -Undirected - An undirected graph is a graph in which all the edges are bi-directional 
-   i.e. the edges do not point in any specific direction.
-  -Directed - A directed graph is a graph in which all the edges are uni-directional 
-   i.e. the edges point in a single direction.
-  -Weighted - In a weighted graph, each edge is assigned a weight or cost.
-  -Cyclic - A graph is cyclic if the graph comprises a path that starts from a vertex and 
-   ends at the same vertex.
-*/
+/**
+ * A Graph is a non-linear data structure consisting of a set of vertices (also called nodes)
+ * and set of unordered edges for an undirected graph or set of ordered edges for an directed graph,
+ * where each edge connects two vertices.
+ * Nodes are entities whose relationships are expressed using edges.
+ * Edges are the components that are used to represent the relationships between various nodes in a graph.
+ * An edge between two nodes expresses a one-way or two-way relationship between the nodes.
+ *
+ * Types
+ * Undirected - An undirected graph is a graph in which all the edges are bi-directional
+ * i.e. the edges do not point in any specific direction.
+ * Directed - A directed graph is a graph in which all the edges are uni-directional
+ * i.e. the edges point in a single direction.
+ * Weighted - In a weighted graph, each edge is assigned a weight or cost.
+ * Cyclic - A graph is cyclic if the graph comprises a path that starts from a vertex and
+ * ends at the same vertex.
+ */
 
 const { Queue } = require("./Queue");
 const { Stack } = require("./stack-with-array");
