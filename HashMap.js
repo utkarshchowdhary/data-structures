@@ -11,7 +11,7 @@ class HashMap {
     this.loadFactor = loadFactor;
     this.size = 0;
     this.collisions = 0;
-    this.keys = [];
+    this.keys = new Array();
   }
 
   hash(s) {
