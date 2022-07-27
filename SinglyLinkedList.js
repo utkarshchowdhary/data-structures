@@ -10,172 +10,176 @@
 
 class Node {
   constructor(value) {
-    this.value = value;
-    this.next = null;
+    this.value = value
+    this.next = null
   }
 }
 
 class LinkedList {
-  head = null;
-  tail = null;
-  size = 0;
+  constructor() {
+    this.head = null
+    this.tail = null
+    this.size = 0
+  }
 
   append(value) {
-    const node = new Node(value);
+    const node = new Node(value)
 
     if (this.head) {
-      this.tail.next = node;
-      this.tail = node;
+      this.tail.next = node
+      this.tail = node
     } else {
-      this.head = node;
-      this.tail = node;
+      this.head = node
+      this.tail = node
     }
-    this.size++;
+
+    this.size++
   }
 
   prepend(value) {
-    const node = new Node(value);
+    const node = new Node(value)
 
     if (this.head) {
-      node.next = this.head;
-      this.head = node;
+      node.next = this.head
+      this.head = node
     } else {
-      this.head = node;
-      this.tail = node;
+      this.head = node
+      this.tail = node
     }
-    this.size++;
+
+    this.size++
   }
 
   print() {
-    let current = this.head;
+    let current = this.head
 
-    while (current !== null) {
-      process.stdout.write(`${current.value}->`);
-      current = current.next;
+    while (current) {
+      process.stdout.write(`${current.value}->`)
+      current = current.next
     }
-    process.stdout.write(`null\n`);
+
+    process.stdout.write(`null\n`)
   }
 
   insert(index, value) {
     if (index >= this.size) {
       // throw new Error("Index out of bounds");
-      this.append(value);
-      return;
+      this.append(value)
+      return
     }
 
     if (index === 0) {
-      this.prepend(value);
-      return;
+      this.prepend(value)
+      return
     }
 
-    const node = new Node(value);
+    const node = new Node(value)
 
-    let current = this.head;
-    let previous = null;
+    let current = this.head
+    let previous = null
 
     while (index !== 0) {
-      previous = current;
-      current = current.next;
-      index--;
+      previous = current
+      current = current.next
+      index--
     }
 
-    node.next = current;
-    previous.next = node;
+    node.next = current
+    previous.next = node
 
-    this.size++;
+    this.size++
   }
 
   removeFirst() {
-    if (this.head) {
-      if (this.head === this.tail) {
-        this.head = null;
-        this.tail = null;
-      } else {
-        this.head = this.head.next;
-      }
+    if (!this.head) return
 
-      this.size--;
+    if (this.size === 1) {
+      this.tail = null
     }
+    this.head = this.head.next
+    this.size--
   }
 
   removeLast() {
-    if (this.head) {
-      if (this.head === this.tail) {
-        this.head = null;
-        this.tail = null;
-      } else {
-        let previousToTail = this.head;
+    if (!this.head) return
 
-        while (previousToTail.next !== this.tail) {
-          previousToTail = previousToTail.next;
-        }
+    if (this.size === 1) {
+      this.head = null
+      this.tail = null
+    } else {
+      let previousToTail = this.head
 
-        previousToTail.next = null;
-        this.tail = previousToTail;
+      while (previousToTail.next !== this.tail) {
+        previousToTail = previousToTail.next
       }
 
-      this.size--;
+      previousToTail.next = null
+      this.tail = previousToTail
     }
+
+    this.size--
   }
 
   remove(index) {
     if (index >= this.size) {
-      throw new Error("Index out of bounds");
+      throw new Error('Index out of bounds')
     }
 
     if (index === 0) {
-      this.removeFirst();
-      return;
-    } else if (index === this.size - 1) {
-      this.removeLast();
-      return;
+      this.removeFirst()
+      return
     }
 
-    let current = this.head;
-    let previous = null;
+    if (index === this.size - 1) {
+      this.removeLast()
+      return
+    }
+
+    let current = this.head
+    let previous = null
 
     while (index !== 0) {
-      previous = current;
-      current = current.next;
-      index--;
+      previous = current
+      current = current.next
+      index--
     }
 
-    previous.next = current.next;
+    previous.next = current.next
 
-    this.size--;
+    this.size--
   }
 
   reverse() {
-    let current = this.head;
-    let prev = null;
+    let current = this.head
+    let prev = null
 
     while (current !== null) {
-      let next = current.next;
-      current.next = prev;
-      prev = current;
+      let next = current.next
+      current.next = prev
+      prev = current
 
-      current = next;
+      current = next
     }
 
-    this.tail = this.head;
-    this.head = prev;
+    this.tail = this.head
+    this.head = prev
   }
 }
 
-const linkedList = new LinkedList();
+const linkedList = new LinkedList()
 
-linkedList.append("3");
-linkedList.append("5");
+linkedList.append('3')
+linkedList.append('5')
 
-linkedList.prepend("1");
+linkedList.prepend('1')
 
-linkedList.insert(1, "2");
-linkedList.insert(3, "4");
+linkedList.insert(1, '2')
+linkedList.insert(3, '4')
 
-linkedList.insert(0, "0");
+linkedList.insert(0, '0')
 
-linkedList.reverse();
+linkedList.reverse()
 
-linkedList.print();
+linkedList.print()
 
-console.dir(linkedList, { depth: null });
+console.dir(linkedList, { depth: null })

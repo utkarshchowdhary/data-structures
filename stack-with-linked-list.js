@@ -7,52 +7,55 @@
 
 class Node {
   constructor(value) {
-    this.value = value;
-    this.next = null;
+    this.value = value
+    this.next = null
   }
 }
 
 class Stack {
-  top = null;
-  size = 0;
+  constructor() {
+    this.top = null
+    this.size = 0
+  }
 
   isEmpty() {
-    return this.top === null;
+    return !this.top
   }
 
   peek() {
-    return this.top && this.top.value;
+    return this.top?.value
   }
 
   push(value) {
-    const node = new Node(value);
+    const node = new Node(value)
 
-    if (this.top) {
-      node.next = this.top;
-      this.top = node;
+    if (this.isEmpty()) {
+      this.top = node
     } else {
-      this.top = node;
+      node.next = this.top
+      this.top = node
     }
-    return ++this.size;
+
+    return ++this.size
   }
 
   pop() {
-    if (this.top) {
-      const current = this.top;
-      this.top = this.top.next;
-      this.size--;
-      return current.value;
-    }
-    return null;
+    if (this.isEmpty()) return
+
+    const current = this.top
+    this.top = this.top.next
+    this.size--
+
+    return current.value
   }
 }
 
-const stack = new Stack();
+const stack = new Stack()
 
-stack.push("google");
-stack.push("yahoo");
-stack.push("bing");
+stack.push('google')
+stack.push('yahoo')
+stack.push('bing')
 
-stack.pop();
+stack.pop()
 
-console.dir(stack, { depth: null });
+console.dir(stack, { depth: null })

@@ -1,21 +1,23 @@
 class Stack {
-  stack = new Array();
+  constructor() {
+    this.stack = []
+  }
 
   isEmpty() {
-    return this.stack.length === 0;
+    return !!this.stack.length
   }
 
   peek() {
-    return this.stack[this.stack.length - 1];
+    return this.stack[this.stack.length - 1]
   }
 
   push(value) {
-    return this.stack.push(value);
+    return this.stack.push(value)
   }
 
   pop() {
-    return this.stack.pop();
+    return this.stack.pop()
   }
 }
 
-exports.Stack = Stack;
+exports.Stack = Stack

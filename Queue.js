@@ -7,59 +7,62 @@
 
 class Node {
   constructor(value) {
-    this.value = value;
-    this.next = null;
+    this.value = value
+    this.next = null
   }
 }
 
 class Queue {
-  first = null;
-  last = null;
-  size = 0;
+  constructor() {
+    this.first = null
+    this.last = null
+    this.size = 0
+  }
 
   isEmpty() {
-    return this.first === null;
+    return !this.first
   }
 
   peek() {
-    return this.first && this.first.value;
+    return this.first?.value
   }
 
   enqueue(value) {
-    const node = new Node(value);
+    const node = new Node(value)
 
-    if (this.first) {
-      this.last.next = node;
-      this.last = node;
+    if (this.isEmpty()) {
+      this.first = node
+      this.last = node
     } else {
-      this.first = node;
-      this.last = node;
+      this.last.next = node
+      this.last = node
     }
-    return ++this.size;
+
+    return ++this.size
   }
 
   dequeue() {
-    if (this.first) {
-      const current = this.first;
-      if (this.first === this.last) {
-        this.last = null;
-      }
-      this.first = this.first.next;
-      this.size--;
-      return current.value;
+    if (this.isEmpty()) return
+
+    const current = this.first
+    if (this.size === 1) {
+      this.last = null
     }
-    return null;
+    this.first = this.first.next
+    this.size--
+
+    return current.value
   }
 }
 
-// const queue = new Queue();
+// const queue = new Queue()
 
-// queue.enqueue("QuickSilver");
-// queue.enqueue("Wanda");
-// queue.enqueue("Vision");
+// queue.enqueue('QuickSilver')
+// queue.enqueue('Wanda')
+// queue.enqueue('Vision')
 
-// queue.dequeue();
+// queue.dequeue()
 
-// console.dir(queue, { depth: null });
+// console.dir(queue, { depth: null })
 
-exports.Queue = Queue;
+exports.Queue = Queue
