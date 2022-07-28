@@ -45,10 +45,14 @@ class Queue {
     if (this.isEmpty()) return
 
     const current = this.first
+
     if (this.size === 1) {
+      this.first = null
       this.last = null
+    } else {
+      this.first = this.first.next
     }
-    this.first = this.first.next
+
     this.size--
 
     return current.value

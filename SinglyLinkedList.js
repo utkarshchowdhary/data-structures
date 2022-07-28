@@ -15,7 +15,7 @@ class Node {
   }
 }
 
-class LinkedList {
+class SinglyLinkedList {
   constructor() {
     this.head = null
     this.tail = null
@@ -94,9 +94,12 @@ class LinkedList {
     if (!this.head) return
 
     if (this.size === 1) {
+      this.head = null
       this.tail = null
+    } else {
+      this.head = this.head.next
     }
-    this.head = this.head.next
+
     this.size--
   }
 
@@ -153,7 +156,7 @@ class LinkedList {
     let current = this.head
     let prev = null
 
-    while (current !== null) {
+    while (current) {
       let next = current.next
       current.next = prev
       prev = current
@@ -166,20 +169,20 @@ class LinkedList {
   }
 }
 
-const linkedList = new LinkedList()
+const singlyLinkedList = new SinglyLinkedList()
 
-linkedList.append('3')
-linkedList.append('5')
+singlyLinkedList.append('3')
+singlyLinkedList.append('5')
 
-linkedList.prepend('1')
+singlyLinkedList.prepend('1')
 
-linkedList.insert(1, '2')
-linkedList.insert(3, '4')
+singlyLinkedList.insert(1, '2')
+singlyLinkedList.insert(3, '4')
 
-linkedList.insert(0, '0')
+singlyLinkedList.insert(0, '0')
 
-linkedList.reverse()
+singlyLinkedList.reverse()
 
-linkedList.print()
+singlyLinkedList.print()
 
-console.dir(linkedList, { depth: null })
+console.dir(singlyLinkedList, { depth: null })
