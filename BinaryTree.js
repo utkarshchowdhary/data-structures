@@ -26,6 +26,7 @@
  * the left nodes or the right nodes.
  */
 
+const { Queue } = require('./Queue')
 const { Stack } = require('./Stack')
 
 class Node {
@@ -37,7 +38,67 @@ class Node {
 }
 
 class BinaryTree {
-  root = null
+  constructor() {
+    this.root = null
+  }
+
+  // insertion in level order fashion
+  insert(value) {
+    if (!this.root) {
+      this.root = new Node(value)
+      return
+    }
+
+    const queue = new Queue()
+    queue.enqueue(this.root)
+
+    while (!queue.isEmpty()) {
+      const current = queue.dequeue()
+
+      if (!current.left) {
+        current.left = new Node(value)
+        return
+      } else {
+        queue.enqueue(current.left)
+      }
+
+      if (!current.right) {
+        current.right = new Node(value)
+        return
+      } else {
+        queue.enqueue(current.right)
+      }
+    }
+  }
+
+  levelOrderTraversal() {
+    if (!this.root) return
+
+    const queue = new Queue()
+    queue.enqueue(this.root)
+
+    while (!queue.isEmpty()) {
+      const current = queue.dequeue()
+
+      process.stdout.write(`${current.value} `)
+
+      if (current.left) {
+        queue.enqueue(current.left)
+      }
+
+      if (current.right) {
+        queue.enqueue(current.right)
+      }
+    }
+  }
+
+  preOrderTraversal(node) {
+    if (!node) return
+
+    process.stdout.write(`${node.value} `)
+    this.preOrderTraversal(node.left)
+    this.preOrderTraversal(node.right)
+  }
 
   preOrderTraversalIterative() {
     if (!this.root) return
@@ -61,12 +122,12 @@ class BinaryTree {
     }
   }
 
-  preOrderTraversal(node) {
+  inOrderTraversal(node) {
     if (!node) return
 
+    this.inOrderTraversal(node.left)
     process.stdout.write(`${node.value} `)
-    this.preOrderTraversal(node.left)
-    this.preOrderTraversal(node.right)
+    this.inOrderTraversal(node.right)
   }
 
   inOrderTraversalIterative() {
@@ -88,12 +149,12 @@ class BinaryTree {
     }
   }
 
-  inOrderTraversal(node) {
+  postOrderTraversal(node) {
     if (!node) return
 
-    this.inOrderTraversal(node.left)
+    this.postOrderTraversal(node.left)
+    this.postOrderTraversal(node.right)
     process.stdout.write(`${node.value} `)
-    this.inOrderTraversal(node.right)
   }
 
   postOrderTraversalIterative() {
@@ -123,14 +184,6 @@ class BinaryTree {
       }
     }
   }
-
-  postOrderTraversal(node) {
-    if (!node) return
-
-    this.postOrderTraversal(node.left)
-    this.postOrderTraversal(node.right)
-    process.stdout.write(`${node.value} `)
-  }
 }
 
 const tree = new BinaryTree()
@@ -139,17 +192,22 @@ const tree = new BinaryTree()
     2  3
   4 5
 */
-tree.root = new Node('1')
-tree.root.left = new Node('2')
-tree.root.right = new Node('3')
-tree.root.left.left = new Node('4')
-tree.root.left.right = new Node('5')
+tree.insert('1')
+tree.insert('2')
+tree.insert('3')
+tree.insert('4')
+tree.insert('5')
 
 console.dir(tree, { depth: null })
 
-console.log('PreOrder')
+console.log('LevelOrder')
+tree.levelOrderTraversal()
+
+console.log('\nPreOrder')
 tree.preOrderTraversal(tree.root)
+
 console.log('\nInOrder')
 tree.inOrderTraversal(tree.root)
+
 console.log('\nPostOrder')
 tree.postOrderTraversal(tree.root)
