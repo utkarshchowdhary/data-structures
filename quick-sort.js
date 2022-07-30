@@ -1,21 +1,23 @@
-function quickSort(a, low, high) {
+function quickSort(arr, low, high) {
   if (low < high) {
-    let partitionIndex = low;
+    let partitionIndex = low
+
     for (let i = low; i < high; i++) {
-      if (a[i] <= a[high]) {
-        [a[partitionIndex], a[i]] = [a[i], a[partitionIndex]];
-        partitionIndex++;
+      if (arr[i] < arr[high]) {
+        ;[arr[partitionIndex], arr[i]] = [arr[i], arr[partitionIndex]]
+        partitionIndex++
       }
     }
 
-    [a[partitionIndex], a[high]] = [a[high], a[partitionIndex]];
+    ;[arr[partitionIndex], arr[high]] = [arr[high], arr[partitionIndex]]
 
-    quickSort(a, low, partitionIndex - 1);
-    quickSort(a, partitionIndex + 1, high);
-
-    return a;
+    quickSort(arr, low, partitionIndex - 1)
+    quickSort(arr, partitionIndex + 1, high)
   }
+
+  return arr
 }
 
-const a = [8, 7, 6, 1, 0, 9, 2];
-console.log(quickSort(a, 0, a.length - 1));
+const arr = [8, 7, 6, 1, 0, 9, 2]
+
+console.log(quickSort(arr, 0, arr.length - 1))

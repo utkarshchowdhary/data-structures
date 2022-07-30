@@ -1,15 +1,18 @@
 function insertionSort(array) {
-  const length = array.length;
+  const n = array.length
 
-  for (let i = 1; i < length; i++) {
-    const value = array[i];
-    let j = i - 1;
+  for (let i = 1; i < n; i++) {
+    const value = array[i]
+    let j = i - 1
+
     for (; j >= 0 && array[j] > value; j--) {
-      array[j + 1] = array[j];
+      array[j + 1] = array[j]
     }
-    array[j + 1] = value;
+
+    array[j + 1] = value
   }
-  return array;
+
+  return array
 }
 
-console.log(insertionSort([6, 3, 5, 8, 0]));
+console.log(insertionSort([6, 3, 5, 8, 0]))
