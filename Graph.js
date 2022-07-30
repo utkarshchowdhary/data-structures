@@ -17,7 +17,7 @@
  */
 
 const { Queue } = require("./Queue");
-const { Stack } = require("./stack-with-array");
+const { Stack } = require("./Stack");
 
 class Graph {
   adjacencyList = new Map();

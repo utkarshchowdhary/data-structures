@@ -50,12 +50,14 @@ class Stack {
   }
 }
 
-const stack = new Stack()
+// const stack = new Stack()
 
-stack.push('google')
-stack.push('yahoo')
-stack.push('bing')
+// stack.push('google')
+// stack.push('yahoo')
+// stack.push('bing')
 
-stack.pop()
+// stack.pop()
 
-console.dir(stack, { depth: null })
+// console.dir(stack, { depth: null })
+
+exports.Stack = Stack
