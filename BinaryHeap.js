@@ -73,13 +73,13 @@ class BinaryHeap {
       let rightChildIndex = this.right(index)
       let largest = index
 
-      // if the left child exists and its greater than current node set its index to largest.
+      // set the index of the left child to the largest if it exists and is greater than the current node.
       if (leftChildIndex < n && this.heap[leftChildIndex] > current) {
         largest = leftChildIndex
       }
 
-      // if the right child exists and its greater than the greatest between current node and
-      // left child set its index to largest.
+      // set the index of the right child to the largest if it exists and is greater than the greatest between
+      // the current node and its left child.
       if (
         rightChildIndex < n &&
         this.heap[rightChildIndex] > this.heap[largest]
@@ -87,11 +87,11 @@ class BinaryHeap {
         largest = rightChildIndex
       }
 
-      // if the current node is greater than its left and right child, end here.
+      // if the current node is greater than its children, end here.
       if (largest === index) break
 
-      // Otherwise, swap current node with the largest node and
-      // save its position which will be the next current.
+      // Otherwise, swap the current node with the largest node and
+      // save its position, which will be the next current.
       this.heap[index] = this.heap[largest]
       this.heap[largest] = current
       index = largest
