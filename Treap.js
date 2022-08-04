@@ -14,7 +14,7 @@ class Treap {
     this.root = null
   }
 
-  rotate_left(node) {
+  rotateLeft(node) {
     // rotate node in counter-clockwise direction.
     const R = node.right
     node.right = R.left
@@ -22,7 +22,7 @@ class Treap {
     return R
   }
 
-  rotate_right(node) {
+  rotateRight(node) {
     // rotate node in clockwise direction.
     const L = node.left
     node.left = L.right
@@ -41,13 +41,13 @@ class Treap {
       node.left = this._insert(node.left, value)
       // if the node's left child has a higher preference then rotate the node towards right.
       if (node.priority > node.left.priority) {
-        node = this.rotate_right(node)
+        node = this.rotateRight(node)
       }
     } else if (value > node.value) {
       node.right = this._insert(node.right, value)
       // if the node's right child has a higher preference then rotate the node towards left.
       if (node.priority > node.right.priority) {
-        node = this.rotate_left(node)
+        node = this.rotateLeft(node)
       }
     }
 
@@ -70,12 +70,12 @@ class Treap {
         if (node.left.priority < node.right.priority) {
           // if the node's left child has a higher preference than right then rotate the node towards right,
           // this will move the node to be deleted further down right.
-          node = this.rotate_right(node)
+          node = this.rotateRight(node)
           node.right = this._delete(node.right, value)
         } else {
           // if the node's right child has a higher preference than left then rotate the node towards left,
           // this will move the node to be deleted further down left.
-          node = this.rotate_left(node)
+          node = this.rotateLeft(node)
           node.left = this._delete(node.left, value)
         }
       } else if (node.left) {
