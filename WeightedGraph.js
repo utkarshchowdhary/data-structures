@@ -1,4 +1,4 @@
-const { PriorityQueue } = require("./min-priority-queue");
+const { MinPriorityQueue } = require("./MinPriorityQueue");
 
 class WeightedGraph {
   adjacencyList = new Map();
@@ -15,9 +15,9 @@ class WeightedGraph {
     // Dijkstra's Algorithm creates a tree of shortest paths from the starting vertex, the source,
     // to all other vertices in the graph.
 
-    // min-priority queue where priorities are organised as weights is used to ensure that
+    // min priority queue where priorities are organised as weights is used to ensure that
     // minimum weights are explored first.
-    const pq = new PriorityQueue();
+    const pq = new MinPriorityQueue();
     const dist = new Map();
     const prev = new Map();
     const visited = new Set();

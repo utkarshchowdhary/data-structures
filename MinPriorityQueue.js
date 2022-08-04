@@ -96,7 +96,7 @@ class MinPriorityQueue {
   }
 }
 
-const pq = new MinPriorityQueue()
+// const pq = new MinPriorityQueue()
 /*
       31
     5  3
