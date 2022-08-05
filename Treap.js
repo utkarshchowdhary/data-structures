@@ -16,18 +16,18 @@ class Treap {
 
   rotateLeft(node) {
     // rotate node in counter-clockwise direction.
-    const R = node.right
-    node.right = R.left
-    R.left = node
-    return R
+    const newParent = node.right
+    node.right = newParent.left
+    newParent.left = node
+    return newParent
   }
 
   rotateRight(node) {
     // rotate node in clockwise direction.
-    const L = node.left
-    node.left = L.right
-    L.right = node
-    return L
+    const newParent = node.left
+    node.left = newParent.right
+    newParent.right = node
+    return newParent
   }
 
   insert(value) {
