@@ -64,34 +64,34 @@ class BinaryHeap {
 
     this.heap[0] = last
 
-    let index = 0
     const n = this.heap.length
+    let index = 0
     const current = this.heap[0]
 
     while (true) {
       let leftIndex = this.left(index)
       let rightIndex = this.right(index)
-      let largest = index
+      let next = index
 
-      // set the index of the left child to the largest if it exists and is greater than the current node.
+      // set the index of the left child to the next if it exists and is greater than the current node.
       if (leftIndex < n && this.heap[leftIndex] > current) {
-        largest = leftIndex
+        next = leftIndex
       }
 
-      // set the index of the right child to the largest if it exists and is greater than the greatest between
+      // set the index of the right child to the next if it exists and is greater than the greatest between
       // the current node and its left child.
-      if (rightIndex < n && this.heap[rightIndex] > this.heap[largest]) {
-        largest = rightIndex
+      if (rightIndex < n && this.heap[rightIndex] > this.heap[next]) {
+        next = rightIndex
       }
 
-      // if the current node is greater than its children, end here.
-      if (largest === index) break
+      // if the current node is greater than its children break out of the loop.
+      if (next === index) break
 
-      // Otherwise, swap the current node with the largest node and
+      // Otherwise, swap the current node with the next node and
       // save its position, which will be the next current.
-      this.heap[index] = this.heap[largest]
-      this.heap[largest] = current
-      index = largest
+      this.heap[index] = this.heap[next]
+      this.heap[next] = current
+      index = next
     }
 
     return max
