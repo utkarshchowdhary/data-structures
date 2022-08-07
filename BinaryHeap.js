@@ -56,35 +56,32 @@ class BinaryHeap {
   extractMax() {
     // replace the root node with the "fartest right node" on the lowest level of the heap.
     const max = this.heap[0]
-    const end = this.heap.pop()
+    const last = this.heap.pop()
 
     // if there are no nodes left in the heap after removing the last node,
-    // i.e., initially it was empty or only had one node, end here.
+    // i.e., initially it was empty or only had one node, return the root node.
     if (this.isEmpty()) return max
 
-    this.heap[0] = end
+    this.heap[0] = last
 
     let index = 0
     const n = this.heap.length
     const current = this.heap[0]
 
     while (true) {
-      let leftChildIndex = this.left(index)
-      let rightChildIndex = this.right(index)
+      let leftIndex = this.left(index)
+      let rightIndex = this.right(index)
       let largest = index
 
       // set the index of the left child to the largest if it exists and is greater than the current node.
-      if (leftChildIndex < n && this.heap[leftChildIndex] > current) {
-        largest = leftChildIndex
+      if (leftIndex < n && this.heap[leftIndex] > current) {
+        largest = leftIndex
       }
 
       // set the index of the right child to the largest if it exists and is greater than the greatest between
       // the current node and its left child.
-      if (
-        rightChildIndex < n &&
-        this.heap[rightChildIndex] > this.heap[largest]
-      ) {
-        largest = rightChildIndex
+      if (rightIndex < n && this.heap[rightIndex] > this.heap[largest]) {
+        largest = rightIndex
       }
 
       // if the current node is greater than its children, end here.
