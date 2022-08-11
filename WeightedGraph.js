@@ -21,13 +21,13 @@ class WeightedGraph {
     // minimum weights are explored first.
     const pq = new PriorityQueue()
     const dist = new Map()
-    const prev = new Map()
+    const predecessors = new Map()
     const visited = new Set()
 
     for (const [v] of this.adjacencyList) {
       if (v === source) {
         dist.set(source, 0) // distance from source to itself is zero.
-        prev.set(source, null) // source vertex dosen't have a predecessor.
+        predecessors.set(source, source) // source vertex doesn't have a predecessor, so it points to itself.
         pq.enqueue(source, 0)
       } else {
         dist.set(v, Infinity) // unknown distance from source to each node it set to infinity.
@@ -46,7 +46,7 @@ class WeightedGraph {
           // is smaller than its previous weight.
           if (!visited.has(v) && alt < dist.get(v)) {
             dist.set(v, alt) // set its weight to the smaller weight passing through current vertex.
-            prev.set(v, u) // set its previous to current vertex.
+            predecessors.set(v, u) // set its predecessor to current vertex.
             pq.enqueue(v, alt) // add neighbour vertex to priority queue.
           }
         }
@@ -55,7 +55,7 @@ class WeightedGraph {
       }
     }
 
-    return { dist, prev }
+    return { dist, predecessors }
   }
 
   bellmanFord(source) {
@@ -146,6 +146,7 @@ graph.addEdge(5, 8, 2)
 graph.addEdge(6, 8, 4)
 graph.addEdge(7, 8, 5)
 
+console.log('Directed weighted graph with non-negative weights')
 console.log(graph)
 
 console.log("Dijkstra's Shortest Path Algorithm")
@@ -176,6 +177,7 @@ negWtGraph.addEdge(5, 8, 50)
 negWtGraph.addEdge(6, 7, -50)
 negWtGraph.addEdge(7, 8, -10)
 
+console.log('Directed weighted graph with negative weights')
 console.log(negWtGraph)
 
 console.log('Bellman Ford Shortest Path Algorithm')
