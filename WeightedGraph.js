@@ -59,14 +59,14 @@ class WeightedGraph {
   }
 
   bellmanFord(source) {
-    // The Bellman-Ford algorithm is a SSSP algorithm.
+    // The Bellman-Ford algorithm is a single-source shortest path algorithm.
     const dist = new Map()
-    const prev = new Map()
+    const predecessors = new Map()
 
     for (const [v] of this.adjacencyList) {
       if (v === source) {
         dist.set(source, 0) // distance from source to itself is zero.
-        prev.set(source, null) // source vertex dosen't have a predecessor.
+        predecessors.set(source, source) // source vertex dosen't have a predecessor, so it points to itself..
       } else {
         dist.set(v, Infinity) // unknown distance from source to each node it set to infinity.
       }
@@ -81,7 +81,7 @@ class WeightedGraph {
           const alt = dist.get(u) + w
           if (alt < dist.get(v)) {
             dist.set(v, alt)
-            prev.set(v, u)
+            predecessors.set(v, u)
           }
         }
       }
@@ -91,19 +91,17 @@ class WeightedGraph {
     // if there exists a negative cycle in the graph, then there is no shortest path.
     // going around the negative cycle an infinite number of times would continue to decrease
     // the cost of the path.
-    for (let i = 0; i < this.adjacencyList.size - 1; i++) {
-      for (const [u, edges] of this.adjacencyList) {
-        for (const [v, w] of edges) {
-          const alt = dist.get(u) + w
-          if (alt < dist.get(v)) {
-            dist.set(v, -Infinity)
-            prev.set(v, u)
-          }
+    for (const [u, edges] of this.adjacencyList) {
+      for (const [v, w] of edges) {
+        const alt = dist.get(u) + w
+        if (alt < dist.get(v)) {
+          dist.set(v, -Infinity)
+          predecessors.set(v, u)
         }
       }
     }
 
-    return { dist, prev }
+    return { dist, predecessors }
   }
 }
 
