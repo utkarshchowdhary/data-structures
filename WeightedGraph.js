@@ -66,7 +66,7 @@ class WeightedGraph {
     for (const [v] of this.adjacencyList) {
       if (v === source) {
         dist.set(source, 0) // distance from source to itself is zero.
-        predecessors.set(source, source) // source vertex dosen't have a predecessor, so it points to itself..
+        predecessors.set(source, source) // source vertex dosen't have a predecessor, so it points to itself.
       } else {
         dist.set(v, Infinity) // unknown distance from source to each node it set to infinity.
       }
